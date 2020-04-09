@@ -153,7 +153,7 @@ function transcribe(text) {
     let ttt = answer[i + 1].split('')
     if (
       (front.includes(temp[i + 1]) && consonants.includes(temp[i])) ||
-      consonants.includes(temp[i] && ttt.includes('ʲ')) ||
+      (consonants.includes(temp[i]) && ttt.includes('ʲ')) ||
       (answer[i + 1] === 'ʲ' &&
         consonants.includes(temp[i] && answer[i] !== 'j'))
     ) {
