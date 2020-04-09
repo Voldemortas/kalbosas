@@ -20,7 +20,8 @@ async function apiRoute(req, res) {
     .split(' ')
     .map((word, index) => {
       if (word === lemmas[index][0] && lemmas[index].length === 2) {
-        if (lemmas[index][1].match(/sngr/).length > 0) {
+        let match = lemmas[index][1].match(/[\s]sngr/)
+        if (match !== null) {
           return word.replace(/si/, 'si.')
         }
       }
