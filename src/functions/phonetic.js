@@ -154,6 +154,14 @@ function transcribe(text) {
   for (let i = temp.length - 2; i >= 0; i--) {
     let ttt = answer[i + 1].split('')
     if (
+      (answer[i + 1] === 'd' &&
+        answer[i + 2] === '͡' &&
+        answer[i + 3] === 'ʒʲ' &&
+        consonants.includes(temp[i])) ||
+      (answer[i + 1] === 't' &&
+        answer[i + 2] === '͡' &&
+        answer[i + 3] === 'ʃʲ' &&
+        consonants.includes(temp[i])) ||
       (front.includes(temp[i + 1]) && consonants.includes(temp[i])) ||
       (consonants.includes(temp[i]) && ttt.includes('ʲ')) ||
       (answer[i + 1] === 'ʲ' &&
