@@ -96,7 +96,7 @@ let vowels = [
 ]
 
 const front = 'ieæɪɛ'.split('')
-const consonants = 'mbpfvntdszʃʒrlrskgxɣ'.split('')
+const consonants = 'mbpfvntdszʃʒrlrskgxɣʋ'.split('')
 
 /**
  *
