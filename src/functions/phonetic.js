@@ -24,10 +24,6 @@ const pairs = [
     ['p', 'b'],
   ],
   [
-    ['f', 'v'],
-    ['f', 'ʋ'],
-  ],
-  [
     ['t', 'd'],
     ['t', 'd'],
   ],
@@ -93,6 +89,7 @@ let vowels = [
   [/žž|šž|sž|zž/gu, 'ž'],
   [/sč|zč/gu, 'šč'],
   [/sdž|zdž/gu, 'ždž'],
+  [/v/gu, 'ʋ'],
 ]
 
 const front = 'ieæɪɛ'.split('')
@@ -134,7 +131,7 @@ function transcribe(text) {
           .filter(
             (b) =>
               b.filter((a) => a.filter((e) => e === answer[i + 1]).length > 0)
-                .length > 0
+                .length > 0,
           )[0][1]
           .indexOf(answer[i + 1])
         let curId = answer[i]
@@ -142,7 +139,7 @@ function transcribe(text) {
           curId = pairs.filter(
             (b) =>
               b.filter((a) => a.filter((e) => e === answer[i]).length > 0)
-                .length > 0
+                .length > 0,
           )[0][1]
           curId = curId[prevId]
         } catch (e) {}
