@@ -15,7 +15,12 @@ const options = {
 }
 
 async function apiRoute(req, res) {
-  let lemmas = await lemma(req.query.text)
+  let lemmas = (await lemma(req.query.text)).reduce((a, b) => {
+    let lem1 = b[0].split(' ').map((e) => [e, b[1]])
+    a = [...a, ...lem1]
+    return a
+  }, [])
+
   let answer = req.query.text
     .split(' ')
     .map((word, index) => {
@@ -31,7 +36,7 @@ async function apiRoute(req, res) {
   let request = await axios.post(
     'http://donelaitis.vdu.lt/main.php?id=4&nr=9_1',
     postData(answer),
-    options
+    options,
   )
   let data = await request.data
   let q = data.split('READONLY>')[1].split('</')[0].split('\n')
@@ -46,8 +51,8 @@ async function apiRoute(req, res) {
       q.map((e) => {
         w = e.split('(')
         return transcribe(w[0], lemmas) + (w.length > 1 ? '(' + w[1] : '')
-      })
-    )
+      }),
+    ),
   )
 }
 
