@@ -46,6 +46,7 @@ const pairs = [
 ]
 
 let vowels = [
+  [/([ae])&#x0301;([nlrm])/gu, '$1ˑ$2'],
   [/ia&#x0301;i|e&#x0301;i/gu, 'æˑɪ̯'],
   [/ja&#x0300;i|jai&#x0303|jai/gu, 'jɛɪ̯ˑ'],
   [/ja&#x0300;u|jai&#x0303|jau/gu, 'jɛʊ̯ˑ'],
