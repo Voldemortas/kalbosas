@@ -2,6 +2,7 @@ const axios = require('axios').default
 const querystring = require('querystring')
 const transcribe = require('../functions/phonetic2')
 const lemma = require('../functions/lemma')
+const syllabise = require('../functions/syllable')
 
 const postData = (text) =>
   querystring.stringify({
@@ -50,7 +51,9 @@ async function apiRoute(req, res) {
     JSON.stringify(
       q.map((e) => {
         w = e.split('(')
-        return transcribe(w[0], lemmas) + (w.length > 1 ? '(' + w[1] : '')
+        return (
+          syllabise(transcribe(w[0], lemmas)) + (w.length > 1 ? '(' + w[1] : '')
+        )
       }),
     ),
   )
