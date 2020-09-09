@@ -1,6 +1,6 @@
 const S = 'sʃɕzʒʑxɣ '.split('')
 const T = 'ptkbdg'.split('')
-const R = 'rlłmɱnŋjʋf'.split('')
+const R = 'rlɫmɱnŋjʋf'.split('')
 const C = [...S, ...T, ...R]
 const V = 'aæeiuoɪɐɔɛʊ'.split('')
 
@@ -45,7 +45,11 @@ const syllabise = (ipa) => {
     },
     [[]],
   )
-  syllables = syllables.reduce((acc, cur) => {
+  console.log(JSON.stringify(syllables))
+  syllables = syllables.reduce((acc, cur, id) => {
+    if (cur.length === 0) {
+      return acc
+    }
     if (C.includes(cur[cur.length - 1][0])) {
       let last = acc.pop()
       return [...acc, [...last, ...cur]]
@@ -76,6 +80,10 @@ const syllabise = (ipa) => {
         possition = i
         break
       }
+    }
+    if (possition === 0 && id === 0 && cur[0][0] === ' ') {
+      cur.unshift()
+      return [cur]
     }
     if (possition !== cur.length) {
       let last = acc.pop()
