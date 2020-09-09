@@ -87,7 +87,9 @@ const syllabise = (ipa) => {
       return [...acc, cur]
     }
   }, [])
-  return merge(syllables, true).replace(/(\.\s|\s\.)/gu, ' ')
+  return merge(syllables, true)
+    .replace(/(\.\s|\s\.)/gu, ' ')
+    .replace('..', '.')
 }
 
 module.exports = syllabise
