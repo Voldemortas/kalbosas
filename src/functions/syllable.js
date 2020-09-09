@@ -54,6 +54,10 @@ const syllabise = (ipa) => {
       let last = acc.pop()
       return [...acc, [...last, ...cur]]
     }
+    if (cur.length === 1 && cur[0][1].split('').includes('̯')) {
+      let last = acc.pop()
+      return [...acc, [...last, ...cur]]
+    }
     let allowed = { s: true, t: true, r: true }
     let possition = cur.length
     for (let i = cur.length - 2; i >= 0; i--) {
