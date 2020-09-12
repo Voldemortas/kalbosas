@@ -120,6 +120,7 @@ let diacritics = [
   [/̯ˑ̯ˑ/gu, '̯ˑ'],
   [/([nlsz])/gu, '$1̪'],
   [/r/gu, 'r̺'],
+  [/a/gu, 'ɑ̈'],
   //[/([pbkgtd])([˖ʲ])([pbkgtd])/gu, '$1$2̚$3'],//no audible release
 ]
 
@@ -204,7 +205,11 @@ function transcribe(text) {
     }
   }
 
-  answer = answer.join('').replace(/ʲʲ/gu, 'ʲ').replace(/ʷʷ/gu, 'ʷ').split('')
+  answer = answer
+    .join('')
+    .replace(/ʲʲ/gu, 'ʲ')
+    .replace(/ʷʷ/gu, 'ʷ')
+    .split('')
   temp = answer
 
   for (let i = temp.length - 2; i >= 0; i--) {
